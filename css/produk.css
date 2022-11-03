@@ -10,6 +10,10 @@
     
 }
 
+.kotak-produk:hover {
+    border: 1px solid #023b48;
+}
+
 .tombol-detail {
     display: inline-block;
     padding: 10px 45px;
