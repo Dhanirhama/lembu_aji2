@@ -180,6 +180,14 @@ a:focus {
   font-size: 52px;
 }
 
+.catatatan {
+}
+
+.catatan-atas:hover {
+  color: #023b48;
+  border-bottom: 3px solid #023b48 ;
+}
+
 .slider_detail-box h1 span {
   display: inline-block;
   color: #434242;
@@ -494,7 +502,7 @@ a:focus {
 }
 
 .info_section {
-  background-color: #0dc3ff;
+  background-color: #023b48;
 }
 
 .info_items {
