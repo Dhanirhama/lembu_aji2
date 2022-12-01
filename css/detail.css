@@ -6,7 +6,19 @@
     font-weight: bold;
 }
 
+.lembu-jpg .gambar-kecil1 .gambar-kecil2 {
+    border: 3px solid black;
+}
 
+.gambar-kecil1 {
+    display: inline-block;
+    margin-left: -130px;
+}
+
+.gambar-kecil2 {
+    display: inline-block;
+    margin-top: -130px;
+}
 
 .produk-penjelasan {
     width: 500px;
