@@ -85,27 +85,34 @@
             <div class="form_container">
                 <div class="row">
                 <div class="col-md-8 col-sm-10 offset-md-4">
-                    <form action="">
+                  <div class="alert alert-success alert-dismissible fade show d-none notifikasi" role="alert">
+                    <strong>Terkirim</strong> data anda berhasil dikirim.
+                  </div>
+                    <form action="" name="data-booking">
                         <div class="text-center">
                             <h3>
                             Resevarsi melihat Lembu
                             </h3>
                         </div>
                         <div>
-                            <input type="text" placeholder="Nama" class="pt-3">
+                            <input type="text" placeholder="Nama" class="pt-3" name="nama">
                         </div>
                         <div>
-                            <input type=" text" placeholder="No. Handphone">
+                            <input type=" text" placeholder="No. Handphone" name="no. handphone">
                         </div>
                         <div>
-                            <input class="tanggal-box" type="date" placeholder="tanggal">
-                        </div>
+                          <input type=" text" placeholder="alamat" name="alamat">
+                      </div>
                         <div>
-                            <input type="text" class="message-box" placeholder="pesan">
+                            <input class="tanggal-box" type="date" placeholder="tanggal" name="tanggal">
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button>
+                            <button type="submit" class="btn-kirim">
                             KIRIM JADWAL RESERVASI
+                            </button>
+                            <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                              Loading...
                             </button>
                         </div>
                     </form>
@@ -161,4 +168,31 @@
     </div>
   </section>
 </div>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwJ32Y0yM6T_qFqQAKUJptH1ADzKE1UuqAjZIl_Wvqbh9Yj1Uj_PULcl8Cbc6jmQ88I/exec'
+  const form = document.forms['data-booking']
+  const btnKirim = document.querySelector('.btn-kirim');
+  const btnLoading = document.querySelector('.btn-loading');
+  const myAlert = document.querySelector('.notifikasi');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    // ketika tombol kirim diklik
+    //tampilkan tombol loading hilangkan tombol kirim
+    btnLoading.classList.toggle('d-none');
+    btnKirim.classList.toggle('d-none');
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+        myAlert.classList.toggle('d-none');
+        form.reset();
+        console.log('Success!', response);
+      })
+      .catch(error => console.error('Error!', error.message));
+  })
+</script>
+
 </body>
+</html>
